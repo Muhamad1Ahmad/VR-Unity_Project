@@ -46,12 +46,22 @@ public class FireExtinguishZone : MonoBehaviour
     [Tooltip("Delay before disabling the fire root (lets smoke fade out).")]
     [SerializeField] private float disableRootDelay = 2.0f;
 
+    [Header("--- FAILURE UI (Game Over) ---")]
+    [Tooltip("The entire Window object (Failed_Window) to show when the user fails.")]
+    public GameObject failedWindow;
+
+    [Tooltip("The Text object inside the window (to change the reason dynamically).")]
+    public TMPro.TMP_Text failureReasonText;
+    
+    public GameObject locomotionSystem; // Drag your 'XR Origin' or 'Locomotion System' here
+
     // --- Internal State ---
     private int _correctFumesInsideCount = 0;
     private float _progress = 0f;
     private bool _extinguished = false;
     private bool _failed = false; // If true, fire is currently "boosted"
     private bool _warningActive = false;
+    private bool _isGameOver = false; // Tracks if the game has ended
 
     // Store original values for Reset
     private Vector3 _successOriginalScale;
@@ -110,6 +120,9 @@ public class FireExtinguishZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // If the game is already over (failed or won), ignore everything.
+        if (_isGameOver) return;
+        
         if (_extinguished) return;
 
         // --- WRONG FUMES LOGIC ---
@@ -146,6 +159,7 @@ public class FireExtinguishZone : MonoBehaviour
     private void BoostFire()
     {
         _failed = true;
+        _isGameOver = true;
         Debug.Log("WRONG EXTINGUISHER! Fire Boosted!");
 
         // 1. Play Sound
@@ -165,6 +179,26 @@ public class FireExtinguishZone : MonoBehaviour
             var emission = ps.emission;
             emission.rateOverTimeMultiplier *= fireBoostMultiplier;
         }
+
+        // 4. SHOW FAILURE WINDOW (New)
+        if (failedWindow != null) 
+        {
+            failedWindow.SetActive(true);
+            
+            // Optional: Set specific text for this failure
+            if (failureReasonText != null) 
+                failureReasonText.text = "WRONG EXTINGUISHER!\nFire Intensified.";
+        }
+
+        // 5. DISABLE PLAYER MOVEMENT
+        // This keeps them stuck in place looking at the failure message.
+        if (locomotionSystem != null)
+        {
+          locomotionSystem.SetActive(false);  
+        } 
+        
+        // // 4. STOP THE SIMULATION (New)
+        // Time.timeScale = 0f; // Pauses the game loop
     }
 
     private IEnumerator ShowWrongWarningRoutine()
@@ -224,13 +258,19 @@ public class FireExtinguishZone : MonoBehaviour
     {
         StopAllCoroutines();
 
+        _isGameOver = false;
         _extinguished = false;
         _failed = false;
         _progress = 0f;
         _correctFumesInsideCount = 0;
         _warningActive = false;
 
-        // 1. Reset Fire Root & Scale
+        if (locomotionSystem != null) locomotionSystem.SetActive(true);
+
+        // 2. Hide Failure Window
+        if (failedWindow != null) failedWindow.SetActive(false);
+
+        // 3. Reset Fire Root & Scale
         if (fireRootToDisable != null) fireRootToDisable.SetActive(true);
         transform.localScale = _fireOriginalScale;
 
@@ -253,11 +293,11 @@ public class FireExtinguishZone : MonoBehaviour
             }
         }
 
-        // 3. Reset Success/Fail Objects
+        // 5. Reset Success/Fail Objects
         if (successObjectSlow != null) successObjectSlow.SetActive(false);
         if (wrongFumesWarningObject != null) wrongFumesWarningObject.SetActive(false);
 
-        // 4. Reset Generic Lists
+        // 6. Reset Generic Lists
         foreach (var obj in turnOnWhenExtinguished)
             if (obj != null) obj.SetActive(false); // Turn them back OFF
 
