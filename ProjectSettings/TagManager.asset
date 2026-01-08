@@ -8,6 +8,8 @@ TagManager:
   - Fumes
   - FumesWater
   - FumesClassD
+  - Fire
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX
