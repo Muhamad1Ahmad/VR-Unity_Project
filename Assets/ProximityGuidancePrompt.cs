@@ -2,6 +2,14 @@ using UnityEngine;
 
 public class ProximityGuidancePrompt : MonoBehaviour
 {
+    [Header("Failure / Reset (Optional)")]
+    [SerializeField] private AlarmCountdownGameManager gameManager;
+
+    [SerializeField] private bool triggerFailureOnProximity = false;
+
+    [TextArea(2, 5)]
+    [SerializeField] private string failureReason = "You got too close to the fire!";
+
     [Header("Dialogue UI")]
     [SerializeField] private StepDialogueUI dialogueUI;
 
@@ -53,6 +61,12 @@ public class ProximityGuidancePrompt : MonoBehaviour
             dialogueUI.ShowCustom(message, showForSeconds);
             _hasShown = true;
             _cooldownTimer = cooldownSeconds;
+            if (triggerFailureOnProximity && gameManager != null)
+            {
+                gameManager.TriggerFailure(failureReason);
+                enabled = false; // stop this script so it doesn't trigger again
+                return;
+            }
         }
     }
 

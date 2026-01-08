@@ -160,7 +160,7 @@ public class AlarmCountdownGameManager : MonoBehaviour
         // Show center message
         if (centerFailureText != null)
         {
-            centerFailureText.text = centerFailureMessage;
+            centerFailureText.text = string.IsNullOrWhiteSpace(reason) ? centerFailureMessage : reason;
             centerFailureText.gameObject.SetActive(true);
 
             if (centerMessageDuration > 0f)

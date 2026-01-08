@@ -9188,6 +9188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348ee840208823d4bb4c87df44a3f3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  triggerFailureOnProximity: 0
+  failureReason: You got too close to the fire!
   dialogueUI: {fileID: 980442877}
   message: Pick up this Fire-Extinguisher and use it to control fire.
   showForSeconds: 2
@@ -9455,13 +9458,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerFailureText: {fileID: 1785752175}
   centerFailureMessage: TIMEOUT..!!! YOU HAVE FAILED TO CONTROL FIRE.
-  centerMessageDuration: 1
+  centerMessageDuration: 5
   hideTimerOnFailure: 1
   timerText: {fileID: 52555070}
   timerLabelText: {fileID: 52555070}
   failedWindow: {fileID: 763266859}
   failureReasonText: {fileID: 430794947}
-  totalSeconds: 2
+  totalSeconds: 20
   uiTickInterval: 1
   redInLastSeconds: 10
   normalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9876,6 +9879,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348ee840208823d4bb4c87df44a3f3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  triggerFailureOnProximity: 0
+  failureReason: You got too close to the fire!
   dialogueUI: {fileID: 980442877}
   message: Pick up this Fire-Extinguisher and use it to control fire.
   showForSeconds: 2
@@ -12273,6 +12279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348ee840208823d4bb4c87df44a3f3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1423382752}
+  triggerFailureOnProximity: 1
+  failureReason: You got too close to the fire!
   dialogueUI: {fileID: 980442877}
   message: 'Please do not get too close to the fire. '
   showForSeconds: 3
@@ -12846,6 +12855,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348ee840208823d4bb4c87df44a3f3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  triggerFailureOnProximity: 0
+  failureReason: You got too close to the fire!
   dialogueUI: {fileID: 980442877}
   message: Press the button to Activate the alarm.
   showForSeconds: 1
@@ -14737,6 +14749,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348ee840208823d4bb4c87df44a3f3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  triggerFailureOnProximity: 0
+  failureReason: You got too close to the fire!
   dialogueUI: {fileID: 980442877}
   message: Press the button to De-Activate the alarm.
   showForSeconds: 1
