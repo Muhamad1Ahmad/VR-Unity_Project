@@ -194,9 +194,23 @@ public class FireExtinguishZone : MonoBehaviour
         // This keeps them stuck in place looking at the failure message.
         if (locomotionSystem != null)
         {
-          locomotionSystem.SetActive(false);  
-        } 
-        
+            if (locomotionSystem != null)
+            {
+                foreach (var comp in locomotionSystem.GetComponentsInChildren<MonoBehaviour>())
+                {
+                    // Disable only locomotion-related components
+                    if (comp is UnityEngine.XR.Interaction.Toolkit.TeleportationProvider ||
+                        comp is UnityEngine.XR.Interaction.Toolkit.ContinuousMoveProviderBase ||
+                        comp is UnityEngine.XR.Interaction.Toolkit.ContinuousTurnProviderBase ||
+                        comp is UnityEngine.XR.Interaction.Toolkit.SnapTurnProviderBase)
+                    {
+                        comp.enabled = false;
+                    }
+                }
+            }
+
+        }
+
         // // 4. STOP THE SIMULATION (New)
         // Time.timeScale = 0f; // Pauses the game loop
     }

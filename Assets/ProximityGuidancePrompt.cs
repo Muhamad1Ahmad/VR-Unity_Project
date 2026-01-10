@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class ProximityGuidancePrompt : MonoBehaviour
 {
+    [Header("Failure UI (Like Wrong Extinguisher)")]
+    [SerializeField] private GameObject failedWindow;
+    [SerializeField] private TMPro.TMP_Text failureReasonText;
+    [SerializeField] private GameObject locomotionSystem;
+
+
     [Header("Failure / Reset (Optional)")]
     [SerializeField] private AlarmCountdownGameManager gameManager;
 
@@ -59,15 +65,23 @@ public class ProximityGuidancePrompt : MonoBehaviour
         if (d <= triggerDistance)
         {
             dialogueUI.ShowCustom(message, showForSeconds);
+
             _hasShown = true;
             _cooldownTimer = cooldownSeconds;
-            if (triggerFailureOnProximity && gameManager != null)
-            {
-                gameManager.TriggerFailure(failureReason);
-                enabled = false; // stop this script so it doesn't trigger again
-                return;
-            }
+
+            // SHOW FAILURE WINDOW (NO SCENE RESET)
+            if (failedWindow != null)
+                failedWindow.SetActive(true);
+
+            if (failureReasonText != null)
+                failureReasonText.text = failureReason;
+
+            if (locomotionSystem != null)
+                locomotionSystem.SetActive(false);
+
+            enabled = false; // stop further checks
         }
+
     }
 
 #if UNITY_EDITOR
