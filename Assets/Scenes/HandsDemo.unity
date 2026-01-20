@@ -2535,7 +2535,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 430794944}
-  - component: {fileID: 430794946}
   - component: {fileID: 430794948}
   - component: {fileID: 430794947}
   m_Layer: 0
@@ -2553,7 +2552,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430794943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2564,14 +2563,6 @@ RectTransform:
   m_AnchoredPosition: {x: 7.663986, y: -87.29787}
   m_SizeDelta: {x: 410.9, y: 424.61}
   m_Pivot: {x: 0, y: 1}
---- !u!222 &430794946
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 430794943}
-  m_CullTransparentMesh: 1
 --- !u!114 &430794947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5900,6 +5891,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6948559598767743589, guid: 12c6e2ea83fea134a836543ed7faf0c2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1693704728}
+    - targetCorrespondingSourceObject: {fileID: 6948559598767743589, guid: 12c6e2ea83fea134a836543ed7faf0c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1693704731}
   m_SourcePrefab: {fileID: 100100000, guid: 12c6e2ea83fea134a836543ed7faf0c2, type: 3}
 --- !u!1 &841112987
 GameObject:
@@ -8945,6 +8939,22 @@ MonoBehaviour:
   triggerDistance: 2
   showOnlyOnce: 0
   cooldownSeconds: 2
+--- !u!114 &1343761875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343761857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25dec86b0e84aab4d8e093f172c45a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueUI: {fileID: 980442877}
+  howToUseMessage: 'Step 3: "Aim at the base of the fire and press the TRIGGER to
+    spray!"'
+  messageDuration: 6
 --- !u!1 &1346214048
 GameObject:
   m_ObjectHideFlags: 0
@@ -9204,9 +9214,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerFailureText: {fileID: 1785752175}
-  centerFailureMessage: TIMEOUT..!!! YOU HAVE FAILED TO CONTROL FIRE.
+  centerFailureMessage: TIMEOUT..!!! YOU HAVE FAILED TO CONTROL THE FIRE.
   centerMessageDuration: 5
   hideTimerOnFailure: 1
+  dialogueUI: {fileID: 980442877}
+  instructionDelay: 4.5
+  extinguisherInstruction: 'Step 2: "Pick up the correct Fire Extinguisher."'
+  instructionDuration: 4
   timerText: {fileID: 52555070}
   timerLabelText: {fileID: 52555070}
   failedWindow: {fileID: 763266859}
@@ -9383,6 +9397,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4834841009228402381, guid: d5f927682928f9f4c89f2b971e51f3d8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1439244499}
+    - targetCorrespondingSourceObject: {fileID: 4834841009228402381, guid: d5f927682928f9f4c89f2b971e51f3d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1439244502}
   m_SourcePrefab: {fileID: 100100000, guid: d5f927682928f9f4c89f2b971e51f3d8, type: 3}
 --- !u!4 &1439244490 stripped
 Transform:
@@ -9639,6 +9656,22 @@ MonoBehaviour:
   triggerDistance: 2
   showOnlyOnce: 0
   cooldownSeconds: 2
+--- !u!114 &1439244502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439244491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25dec86b0e84aab4d8e093f172c45a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueUI: {fileID: 980442877}
+  howToUseMessage: 'Step 3: "Aim at the base of the fire and press the TRIGGER to
+    spray!"'
+  messageDuration: 6
 --- !u!1 &1455498299
 GameObject:
   m_ObjectHideFlags: 0
@@ -10857,6 +10890,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8271077883980134205, guid: 2b4eea0fbdf5e4647acd86b3038db7d4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1343761866}
+    - targetCorrespondingSourceObject: {fileID: 8271077883980134205, guid: 2b4eea0fbdf5e4647acd86b3038db7d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1343761875}
   m_SourcePrefab: {fileID: 100100000, guid: 2b4eea0fbdf5e4647acd86b3038db7d4, type: 3}
 --- !u!114 &1607142550 stripped
 MonoBehaviour:
@@ -11983,12 +12019,13 @@ MonoBehaviour:
   wrongFumesWarningObject: {fileID: 0}
   warningDuration: 7
   failureAudio: {fileID: 0}
+  gameManager: {fileID: 1423382752}
   fireParticles:
   - {fileID: 2057884616}
   fireRootToDisable: {fileID: 2057884613}
   disableRootDelay: 2
   failedWindow: {fileID: 763266859}
-  failureReasonText: {fileID: 0}
+  failureReasonText: {fileID: 430794947}
   locomotionSystem: {fileID: 1797097485}
 --- !u!54 &1693704725
 Rigidbody:
@@ -12030,9 +12067,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   failedWindow: {fileID: 763266859}
-  failureReasonText: {fileID: 0}
+  failureReasonText: {fileID: 430794947}
   locomotionSystem: {fileID: 1797097485}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1423382752}
   triggerFailureOnProximity: 1
   failureReason: You got too close to the fire!
   dialogueUI: {fileID: 980442877}
@@ -12042,6 +12079,24 @@ MonoBehaviour:
   triggerDistance: 1.5
   showOnlyOnce: 1
   cooldownSeconds: 2
+--- !u!114 &1693704731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693704721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe2cda6b07e13f4eb5356976e890d31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueUI: {fileID: 980442877}
+  gameManager: {fileID: 1423382752}
+  fireParticles: {fileID: 2057884616}
+  bufferTime: 8
+  message: '"Step 1: Fire Detected! Press the Alarm Button!"'
+  showDuration: 4
 --- !u!1 &1721371670
 GameObject:
   m_ObjectHideFlags: 0
