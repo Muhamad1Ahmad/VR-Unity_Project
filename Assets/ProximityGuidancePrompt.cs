@@ -73,6 +73,8 @@ public class ProximityGuidancePrompt : MonoBehaviour
             if (failedWindow != null)
                 failedWindow.SetActive(true);
 
+            if (gameManager != null) gameManager.CancelAlarmCountdown();
+
             if (failureReasonText != null)
                 failureReasonText.text = failureReason;
 
