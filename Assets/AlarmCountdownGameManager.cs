@@ -21,6 +21,18 @@ public class AlarmCountdownGameManager : MonoBehaviour
     [Tooltip("Optional: also hide the timer when failure happens.")]
     [SerializeField] private bool hideTimerOnFailure = true;
 
+    [Header("Tutorial Sequence")]
+    [Tooltip("Drag your DialogueManager here.")]
+    [SerializeField] private StepDialogueUI dialogueUI;
+
+    [Tooltip("How long to wait before showing this message (allow the 'Alarm Pressed' message to finish).")]
+    [SerializeField] private float instructionDelay = 4.0f;
+
+    [TextArea]
+    [SerializeField] private string extinguisherInstruction = "Step 2: Pick up the correct Fire Extinguisher.";
+    [SerializeField] private float instructionDuration = 4.0f;
+
+
 
     [Header("References")]
     [Tooltip("Text that displays the countdown (TMP Text).")]
@@ -121,6 +133,8 @@ public class AlarmCountdownGameManager : MonoBehaviour
         UpdateTimerUI(_remaining);
 
         _timerRoutine = StartCoroutine(TimerRoutine());
+
+        StartCoroutine(ShowExtinguisherInstruction());
     }
 
     // If the user succeeds before time runs out
@@ -248,5 +262,22 @@ public class AlarmCountdownGameManager : MonoBehaviour
     {
         if (timerText != null) timerText.gameObject.SetActive(visible);
         if (timerLabelText != null) timerLabelText.gameObject.SetActive(visible);
+    }
+
+    public bool IsAlarmRunning()
+        {
+            return _running;
+        }
+    
+    private IEnumerator ShowExtinguisherInstruction()
+    {
+        // 1. Wait for the previous "You pressed the button" message to finish
+        yield return new WaitForSeconds(instructionDelay);
+
+        // 2. Only show if the alarm is still running (player hasn't failed/quit already)
+        if (_running && dialogueUI != null)
+        {
+            dialogueUI.ShowCustom(extinguisherInstruction, instructionDuration);
+        }
     }
 }
