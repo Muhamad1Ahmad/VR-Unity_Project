@@ -127,6 +127,8 @@ public class FireExtinguishZone : MonoBehaviour
         
         if (_extinguished) return;
 
+        if (failedWindow != null && failedWindow.activeInHierarchy) return;
+
         // --- WRONG FUMES LOGIC ---
         if (other.CompareTag(wrongFumesTag))
         {

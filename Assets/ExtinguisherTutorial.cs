@@ -6,6 +6,8 @@ public class ExtinguisherTutorial : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private StepDialogueUI dialogueUI;
 
+    [SerializeField] private GameObject failedWindow;
+
     [Header("Message")]
     [TextArea]
     [SerializeField] private string howToUseMessage = "Aim at the base of the fire and press the TRIGGER to spray!";
@@ -36,6 +38,7 @@ public class ExtinguisherTutorial : MonoBehaviour
     // FIX: Use 'SelectEnterEventArgs' which works in XR Toolkit 2.x and 3.x
     private void OnPickedUp(SelectEnterEventArgs args)
     {
+        if (failedWindow != null && failedWindow.activeInHierarchy) return;
         if (!_hasPickedUp)
         {
             _hasPickedUp = true;

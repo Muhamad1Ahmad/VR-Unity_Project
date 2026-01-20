@@ -8926,7 +8926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348ee840208823d4bb4c87df44a3f3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  failedWindow: {fileID: 0}
+  failedWindow: {fileID: 763266859}
   failureReasonText: {fileID: 0}
   locomotionSystem: {fileID: 0}
   gameManager: {fileID: 0}
@@ -8952,6 +8952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 980442877}
+  failedWindow: {fileID: 763266859}
   howToUseMessage: 'Step 3: "Aim at the base of the fire and press the TRIGGER to
     spray!"'
   messageDuration: 6
@@ -9643,7 +9644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348ee840208823d4bb4c87df44a3f3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  failedWindow: {fileID: 0}
+  failedWindow: {fileID: 763266859}
   failureReasonText: {fileID: 0}
   locomotionSystem: {fileID: 0}
   gameManager: {fileID: 0}
@@ -9669,6 +9670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 980442877}
+  failedWindow: {fileID: 763266859}
   howToUseMessage: 'Step 3: "Aim at the base of the fire and press the TRIGGER to
     spray!"'
   messageDuration: 6
@@ -12093,6 +12095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 980442877}
   gameManager: {fileID: 1423382752}
+  failedWindow: {fileID: 763266859}
   fireParticles: {fileID: 2057884616}
   bufferTime: 8
   message: '"Step 1: Fire Detected! Press the Alarm Button!"'
