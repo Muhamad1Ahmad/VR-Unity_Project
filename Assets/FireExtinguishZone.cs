@@ -36,6 +36,9 @@ public class FireExtinguishZone : MonoBehaviour
     [Tooltip("Sound to play when fire worsens.")]
     [SerializeField] private AudioSource failureAudio;
 
+    [Header("Game Manager")]
+    public AlarmCountdownGameManager gameManager;
+
     [Header("--- FIRE VFX CONTROL ---")]
     [Tooltip("All fire particle systems to stop/boost.")]
     [SerializeField] private List<ParticleSystem> fireParticles = new List<ParticleSystem>();
@@ -49,7 +52,6 @@ public class FireExtinguishZone : MonoBehaviour
     [Header("--- FAILURE UI (Game Over) ---")]
     [Tooltip("The entire Window object (Failed_Window) to show when the user fails.")]
     public GameObject failedWindow;
-
     [Tooltip("The Text object inside the window (to change the reason dynamically).")]
     public TMPro.TMP_Text failureReasonText;
     
@@ -161,6 +163,8 @@ public class FireExtinguishZone : MonoBehaviour
         _failed = true;
         _isGameOver = true;
         Debug.Log("WRONG EXTINGUISHER! Fire Boosted!");
+        
+        if (gameManager != null) gameManager.CancelAlarmCountdown();
 
         // 1. Play Sound
         if (failureAudio != null) failureAudio.Play();
@@ -229,6 +233,7 @@ public class FireExtinguishZone : MonoBehaviour
     private IEnumerator ExtinguishRoutine()
     {
         _extinguished = true;
+        if (gameManager != null) gameManager.CancelAlarmCountdown();
 
         // 1. Stop Fire Particles
         foreach (var ps in fireParticles)
