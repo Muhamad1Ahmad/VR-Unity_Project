@@ -7,6 +7,8 @@ public class FireStartPrompt : MonoBehaviour
     [SerializeField] private StepDialogueUI dialogueUI;
     [SerializeField] private AlarmCountdownGameManager gameManager;
 
+    [SerializeField] private GameObject failedWindow;
+
     [Header("Visual Sync")]
     [Tooltip("Drag the main fire particle system here.")]
     [SerializeField] private ParticleSystem fireParticles;
@@ -42,8 +44,8 @@ public class FireStartPrompt : MonoBehaviour
 
     private IEnumerator CheckAndShowMessage(float delay)
     {
-        // Wait for the calculated time
         yield return new WaitForSeconds(delay);
+        if (failedWindow != null && failedWindow.activeInHierarchy) yield break;
 
         // Check logic (same as before)
         bool alarmAlreadyActive = false;

@@ -64,6 +64,7 @@ public class ProximityGuidancePrompt : MonoBehaviour
         float d = Vector3.Distance(playerHead.position, transform.position);
         if (d <= triggerDistance)
         {
+            if (failedWindow != null && failedWindow.activeInHierarchy) return;
             dialogueUI.ShowCustom(message, showForSeconds);
 
             _hasShown = true;
