@@ -249,4 +249,9 @@ public class AlarmCountdownGameManager : MonoBehaviour
         if (timerText != null) timerText.gameObject.SetActive(visible);
         if (timerLabelText != null) timerLabelText.gameObject.SetActive(visible);
     }
+
+    public bool IsAlarmRunning()
+        {
+            return _running;
+        }
 }
