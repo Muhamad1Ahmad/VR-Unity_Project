@@ -6987,12 +6987,16 @@ MonoBehaviour:
   steps:
   - text: "Step 0: \u201CWelcome to the Fire Safety Training\u201D"
     duration: 6
+    skip: 0
   - text: "Step 1: \u201CStep 1: You have pressed the fire alarm.\u201D"
-    duration: 5
+    duration: 0.1
+    skip: 1
   - text: "Step 2: \u201CAlarm Off, you have sucessfully controlled fire\u201D"
     duration: 5
+    skip: 0
   - text: "Step 3: \u201CAim at the base of the fire.\u201D"
     duration: 5
+    skip: 0
   hideOnStart: 0
   interruptCurrent: 1
 --- !u!4 &980442878
