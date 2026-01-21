@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -10,8 +10,12 @@ public class StepDialogueUI : MonoBehaviour
     {
         [TextArea(2, 4)]
         public string text = "Step text...";
+
         [Min(0.1f)]
         public float duration = 3f;
+
+        [Tooltip("If true, this step will be ignored (kept in the list so indices don't change).")]
+        public bool skip = false;
     }
 
     [Header("UI References")]
@@ -35,6 +39,7 @@ public class StepDialogueUI : MonoBehaviour
         if (hideOnStart && panelRoot != null)
             panelRoot.SetActive(false);
     }
+
     private void Start()
     {
         ShowStep(0);
@@ -46,10 +51,28 @@ public class StepDialogueUI : MonoBehaviour
         if (steps == null || steps.Count == 0) return;
         if (stepIndex < 0 || stepIndex >= steps.Count) return;
 
+        // ✅ If this step is marked skipped, do NOTHING (no auto-advance)
+        if (steps[stepIndex].skip)
+        {
+            // Optional:
+            // HideNow();
+            return;
+        }
+
         if (interruptCurrent && _routine != null)
             StopCoroutine(_routine);
 
         _routine = StartCoroutine(ShowRoutine(steps[stepIndex].text, steps[stepIndex].duration));
+    }
+
+
+    private int GetNextNonSkippedIndex(int startIndex)
+    {
+        for (int i = startIndex; i < steps.Count; i++)
+        {
+            if (!steps[i].skip) return i;
+        }
+        return -1; // nothing to show
     }
 
     // Optional: call with custom text (not from list)
