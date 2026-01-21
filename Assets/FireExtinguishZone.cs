@@ -237,6 +237,12 @@ public class FireExtinguishZone : MonoBehaviour
         _extinguished = true;
         if (gameManager != null) gameManager.CancelAlarmCountdown();
 
+        var proximityScript = GetComponent<ProximityGuidancePrompt>();
+        if (proximityScript != null) 
+        {
+            proximityScript.enabled = false;
+        }
+
         // 1. Stop Fire Particles
         foreach (var ps in fireParticles)
         {
@@ -286,6 +292,12 @@ public class FireExtinguishZone : MonoBehaviour
         _correctFumesInsideCount = 0;
         _warningActive = false;
 
+        var proximityScript = GetComponent<ProximityGuidancePrompt>();
+        if (proximityScript != null) 
+        {
+            proximityScript.enabled = true;
+        }
+        
         if (locomotionSystem != null) locomotionSystem.SetActive(true);
 
         // 2. Hide Failure Window
