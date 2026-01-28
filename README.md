@@ -88,3 +88,33 @@ The project was developed collaboratively with clearly defined focus areas:
 1. Clone the repository:
    ```bash
    git clone https://github.com/Muhamad1Ahmad/VR-Unity_Project.git
+2. Ensure the following packages are enabled:
+   - OpenXR
+   - Meta XR Core SDK
+   - Meta XR Interaction SDK
+   - XR Interaction Toolkit
+3. Enable **Hand Tracking** in:
+   - OpenXR settings
+   - Meta XR project settings
+4. Switch the build platform to **Android**
+5. Build and deploy the project to the Meta Quest device
+
+---
+
+## External Libraries & Frameworks
+- Unity Engine 2022 LTS
+- Meta XR SDK
+- OpenXR
+- XR Interaction Toolkit
+- TextMeshPro
+
+---
+
+## AI Usage Disclaimer
+AI-based tools (including large language models) were used solely as **development support tools** for:
+- Code structuring suggestions
+- Debugging assistance
+- Documentation drafting support
+
+All architectural decisions, implementation logic, debugging, and final integration were performed and validated by the project authors. No AI-generated code was used without review, modification, and understanding by the developers.
+
