@@ -66,11 +66,11 @@ The project was developed collaboratively with clearly defined focus areas:
 
 | Task Area | Responsible |
 |---------|------------|
-| Interaction logic & state management | Muhammad Ahmad |
-| Training guidance & dialogue systems | Muhammad Ahmad |
+| Interaction logic & state management | Saad Sameer Khan |
+| Training guidance & dialogue systems | Saad Sameer Khan |
 | XR gesture stability & interaction robustness | Muhammad Ahmad |
-| Environment setup & visual feedback | Saad Sameer Khan |
-| Interaction ergonomics & realism | Saad Sameer Khan |
+| Environment setup & visual feedback | Muhammad Ahmad |
+| Interaction ergonomics & realism | Muhammad Ahmad |
 | Integration & testing | Both |
 
 ---
